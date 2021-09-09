@@ -1,1 +1,1 @@
-# arduino-sim800l-relay-control
+# arduino-sim800l-single board relay-control
