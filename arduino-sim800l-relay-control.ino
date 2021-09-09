@@ -10,14 +10,14 @@ const String PHONE = "ENTER_PHONE_HERE";
 SoftwareSerial sim800(rxPin,txPin);
 
 #define RELAY_1 7
-#define RELAY_2 8
+
 
 String smsStatus,senderNumber,receivedDate,msg;
 boolean isReply = false;
 
 void setup() {
   digitalWrite(RELAY_1, HIGH);
-  digitalWrite(RELAY_2, HIGH);
+
   delay(7000);
   
   Serial.begin(115200);
@@ -27,7 +27,7 @@ void setup() {
   Serial.println("SIM800L software serial initialize");
 
   pinMode(RELAY_1, OUTPUT); //Relay 1
-  pinMode(RELAY_2, OUTPUT); //Relay 2
+  
 
   smsStatus = "";
   senderNumber="";
@@ -116,22 +116,22 @@ void extractSms(String buff){
 }
 
 void doAction(){
-  if(msg == "relay1 off"){  
+  if(msg == "0"){  
     digitalWrite(RELAY_1, HIGH);
-    Reply("Relay 1 has been OFF");
+    Reply("Motor OFF");
   }
-  else if(msg == "relay1 on"){
+  else if(msg == "1"){
     digitalWrite(RELAY_1, LOW);
-    Reply("Relay 1 has been ON");
+    Reply("Motor ON");
   }
-  else if(msg == "relay2 off"){
-    digitalWrite(RELAY_2, HIGH);
-    Reply("Relay 2 has been OFF");
-  }
-  else if(msg == "relay2 on"){
-    digitalWrite(RELAY_2, LOW);
-    Reply("Relay 2 has been ON");
-  }
+  
+
+
+
+  
+    
+    
+
 
   
   smsStatus = "";
